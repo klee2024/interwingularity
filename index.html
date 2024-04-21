@@ -171,11 +171,15 @@
       });
 
       document.body.appendChild(matrixContainer);
+      matrixContainer.style.opacity = '0';
     }
 
     // Call function to fill the screen with green text displaying 0s and 1s after a delay
     setTimeout(fillScreenWithMatrix, 19000); // Delay of 3 seconds to allow for the fade-in effect
-  
+    setTimeout(() => {
+      matrixContainer.style.opacity = '1';
+      //line2.style.top = '400px'; // Adjust the distance from the top of the page
+    }, 19000);
     
   </script>
 
