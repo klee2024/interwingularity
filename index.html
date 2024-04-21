@@ -26,22 +26,32 @@
       opacity: 0;
       animation: fadeIn 2s forwards, breathe 6s infinite ease-in-out;
       text: black;
+      background-color: white;
     }
 
     .line2 {
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
-      
+      background-color: white;
     }
     
-    .asciibars {
-      opacity: 0;
+    .matrix-container {
       position: absolute;
-      /*top: -100px; /* Initially above the viewport */
-      /*left: 50%;*/
-      transform: translateX(-50%);
-      transition: opacity 0.5s ease-in-out;
-      /*transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;*/
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      line-height: 20px;
+      font-size: 20px;
+      overflow: hidden;
+      white-space: nowrap;
+      color: rgb(0, 194, 0);
+      z-index: -1;
+      animation: opacity 0.5s ease-in-out,
     }
 
 
@@ -51,6 +61,7 @@
       white-space: nowrap;
       border-right: 2px solid black;; /* Typing cursor effect */
       animation: typing 2s steps(12) infinite;
+      background-color: white;
     }
 
     @keyframes fadeIn {
@@ -127,9 +138,45 @@
 // Start line3 typing animation after 8 seconds
     setTimeout(() => {
       line3.style.opacity = '1';
-      line3.style.animation = 'typeWriter 4s steps(40) forwards'; // Start typing animation
+      line3.style.animation = 'typeWriter 4s steps(30) forwards'; // Start typing animation
     }, 14000); // Adjust timing as needed
 
+    
+    // Function to generate random 0s and 1s
+    function generateRandomBinary() {
+      return Math.random() < 0.5 ? '0' : '1';
+    }
+
+    // Function to fill the screen with green text displaying 0s and 1s
+    function fillScreenWithMatrix() {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      const fontSize = 20; // Adjust font size as needed
+      const columns = Math.ceil(screenWidth);
+      const rows = Math.ceil(screenHeight);
+      const matrixText = [];
+
+      // Generate random binary characters
+      for (let i = 0; i < rows; i++) {
+        matrixText.push(Array.from({ length: columns }, generateRandomBinary).join(''));
+      }
+
+      // Display matrix text on the screen
+      const matrixContainer = document.createElement('div');
+      matrixContainer.classList.add('matrix-container'); // Add class to the matrix container
+      matrixText.forEach(row => {
+        const rowElement = document.createElement('div');
+        rowElement.textContent = row;
+        matrixContainer.appendChild(rowElement);
+      });
+
+      document.body.appendChild(matrixContainer);
+    }
+
+    // Call function to fill the screen with green text displaying 0s and 1s after a delay
+    setTimeout(fillScreenWithMatrix, 19000); // Delay of 3 seconds to allow for the fade-in effect
+  
+    
   </script>
 
 </body>
