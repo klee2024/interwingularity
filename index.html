@@ -35,7 +35,7 @@
       background-color: white;
     }
     
-    .matrix-container {
+    .matrixcontainer {
       position: absolute;
       top: 0;
       left: 0;
@@ -51,7 +51,8 @@
       white-space: nowrap;
       color: rgb(0, 194, 0);
       z-index: -1;
-      animation: opacity 0.5s ease-in-out,
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
     }
 
 
@@ -163,130 +164,33 @@
 
       // Display matrix text on the screen
       const matrixContainer = document.createElement('div');
-      matrixContainer.classList.add('matrix-container'); // Add class to the matrix container
+      matrixContainer.classList.add('matrixcontainer'); // Add class to the matrix container
       matrixText.forEach(row => {
         const rowElement = document.createElement('div');
         rowElement.textContent = row;
         matrixContainer.appendChild(rowElement);
       });
+        matrixContainer.style.opacity = '0';
 
       document.body.appendChild(matrixContainer);
-      matrixContainer.style.opacity = '0';
+      
+      setTimeout(() => {
+    matrixContainer.style.opacity = '1';
+  }, 1000); // Adjust the delay as needed
     }
 
     // Call function to fill the screen with green text displaying 0s and 1s after a delay
     setTimeout(fillScreenWithMatrix, 19000); // Delay of 3 seconds to allow for the fade-in effect
-    setTimeout(() => {
-      matrixContainer.style.opacity = '1';
-      //line2.style.top = '400px'; // Adjust the distance from the top of the page
-    }, 19000);
+
+// Let the browser handle the append operation before changing opacity
     
+
   </script>
 
 </body>
 
 </html>
 
-
-<!---
-<html>
-
-
-
-  <style>
-    
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden; /* Prevent scrollbars */
-    }
-    
-    .haiku {
-      font-family: "Courier New", monospace;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    /**
-    .line1 {
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .line1:hover {
-      opacity: 1;
-    }
-
-    **/
-
-    .line1 {
-      opacity: 0; /* Initially invisible */
-      animation: fadeIn 2s forwards, breathe 6s infinite ease-in-out;
-    }
-    
-     @keyframes fadeIn {
-      0% {
-        opacity: 0; /* Start with opacity 0 */
-      }
-      100% {
-        opacity: 1; /* End with opacity 1 */
-      }
-    }
-
-    @keyframes breathe {
-      0% {
-        font-size: 20px;
-      }
-
-      50% {
-        font-size: 24px;
-      }
-
-      100% {
-        font-size: 20px;
-      }
-    }
-    
-    .line2 {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    }
-
-    .line2:hover {
-      opacity: 1;
-      transform: translateX(-50%) translateY(100%); /* Move text down */
-    }
-  </style>
-
-  <body>
-
-    <div class="haiku">
-      <a class="line1" id="line1" href="https://marimonarca.github.io/Intertwingularity/">breathe, it's all you are</a>
-      <p class="line2">but you are trapped in this lie</p>
-      <a class="line3" href="https://riyakhetarpal.github.io/interwingularity/">life in zeros, ones</a>
-    </div>
-
-
-  </body>
-
-  <script>
-    // Get the element
-    const line1 = document.getElementById('line1');
-
-    // Stop the animation after 5 seconds
-    setTimeout(() => {
-      line1.style.animationPlayState = 'paused';
-    }, 18000); // 18000 milliseconds = 18 seconds, play animation 3x 
-  </script>
-
-
-</html>
 
 
 
