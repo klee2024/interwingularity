@@ -132,7 +132,6 @@
       const escButton = document.getElementById('escButton');
 
 
-      // Stop the animation after 5 seconds
       setTimeout(() => {
         line1.style.animationPlayState = 'paused';
       }, 12000); // 18000 milliseconds = 18 seconds, play animation 3x 
@@ -141,10 +140,9 @@
       // Start line2 animation 1 second after line 1 finishes 
       setTimeout(() => {
         line2.style.opacity = '1';
-        //line2.style.top = '400px'; // Adjust the distance from the top of the page
       }, 13000);
 
-      // Start ascii bar animation after 2 seconds
+
       setTimeout(() => {
         escButton.style.display = 'block';
         escButton.disabled = false;
@@ -187,11 +185,8 @@
         setTimeout(() => {
           matrixContainer.style.opacity = '1';
           matrixContainer.style.backgroundColor = 'black';
-        }, 1000); // Adjust the delay as needed
+        }, 1000); 
       }
-
-      // Call function to fill the screen with green text displaying 0s and 1s after a delay
-       // Delay of 3 seconds to allow for the fade-in effect
     
     // Add event listener to the escape button
       escButton.addEventListener('click', () => {
@@ -207,23 +202,3 @@
   </body>
 
 </html>
-
-
-
-
-
-<!--- 
-breathe, it's all you are 
-(text that moves like breathing)
-
-hover over third line - "bars drop"
-
-hover over life in zeros, ones, bars turn to binary and screen goes to black and green text, 
-
-1. text dissolves in for breathes, breahes 
-2. other text drops in from top, bars go down (press escape button)
-3. 3rd line comes in like it's being typed, bars turn to zeros and ones, then whole screen fades to green and black and zeros and ones in and out around 
-4. whole poem is visible and displayed
-5. redo button to redo animation 
-6. 
---->
